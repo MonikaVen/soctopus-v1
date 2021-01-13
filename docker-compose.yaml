@@ -1,0 +1,16 @@
+version: "2"
+services:
+  cs-octopus:
+    container_name: cs-octopus
+    build: ./
+    image: cs-octopus
+    networks:
+      - so-elastic-net
+    volumes:
+      - /opt/orchestration/csoctopus/SOCtopus.conf:/SOCtopus/SOCtopus.conf:ro 
+      - /opt/orchestration/csoctopus/csoctopus.log:/SOCtopus/csoctopus.log:rw 
+    ports:
+      - "0.0.0.0:7000:7000"
+networks:
+  so-elastic-net:
+    external: true
